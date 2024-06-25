@@ -1,0 +1,42 @@
+@use "../variables" as *;
+
+main {
+	position: relative;
+
+	& > img {
+		object-fit: cover;
+	}
+
+	& > img,
+	.activeContainer {
+		width: 100%;
+		aspect-ratio: 1;
+	}
+
+	.activeContainer {
+		top: 0;
+		pointer-events: none;
+
+		&,
+		& > * {
+			position: absolute;
+		}
+
+		img {
+			width: 50%;
+			aspect-ratio: 20/9;
+			display: none;
+		}
+
+		.activeZoomSleeve {
+			top: 35%;
+			transform: translateY(-50%);
+			right: 30%;
+		}
+
+		.activeZoomTag {
+			bottom: 40%;
+			right: 40%;
+		}
+	}
+}
