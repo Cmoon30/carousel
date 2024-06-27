@@ -62,7 +62,7 @@
 .buttonImg_Tag {
   bottom: 6rem;
   right: 19.5rem;
-  animation-delay: 0.5s;
+  animation-delay: 1s;
 }
 
 @keyframes fadingButton {

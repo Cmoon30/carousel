@@ -11,24 +11,24 @@ $(document).ready(() => {
 		$(event.currentTarget).addClass("activeNavTab");
 	});
 
-	const toggleZoomImage = (button, zoomImgToShow, zoomImgToHide) => {
-		button.on("click", (event) => {
-			event.stopPropagation();
-			zoomImgToShow.toggle();
-			zoomImgToHide.hide();
-		});
-
-		button.on("mouseenter", () => {
-			zoomImgToShow.show();
-			zoomImgToHide.hide();
-		});
+	buttonShowImage = (button, toggleZoomShow, toggleZoomHide) => {
+		button
+			.on("click", (event) => {
+				toggleZoomShow.toggle();
+				toggleZoomHide.hide();
+				event.stopPropagation();
+			})
+			.on("mouseenter", () => {
+				toggleZoomShow.show();
+				toggleZoomHide.hide();
+			});
 	};
 
-	toggleZoomImage(buttonImgSleeve, zoomImgSleeve, zoomImgTag);
-	toggleZoomImage(buttonImgTag, zoomImgTag, zoomImgSleeve);
+	buttonShowImage(buttonImgSleeve, zoomImgSleeve, zoomImgTag);
+	buttonShowImage(buttonImgTag, zoomImgTag, zoomImgSleeve);
 
 	buttonImgSleeve.add(buttonImgTag).on("mouseleave", () => {
-		zoomImgTag.hide();
 		zoomImgSleeve.hide();
+		zoomImgTag.hide();
 	});
 });
