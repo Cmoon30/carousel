@@ -1,0 +1,8 @@
+@use "../variables" as *;
+
+@mixin buttonPseudo($radus, $borderWidth) {
+	content: "";
+	position: absolute;
+	border-radius: $radus;
+	border: $borderWidth solid $white;
+}
