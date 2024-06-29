@@ -7,6 +7,7 @@ main {
 	flex-direction: column;
 
 	& > section {
+		transition: ease-in 0.5s;
 		& > img {
 			object-fit: cover;
 		}
@@ -14,6 +15,7 @@ main {
 		& > img,
 		.activeContainer {
 			min-width: 100%;
+			height: 100%;
 			aspect-ratio: 1;
 		}
 	}

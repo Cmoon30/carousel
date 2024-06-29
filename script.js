@@ -4,8 +4,12 @@ $(document).ready(() => {
 	const zoomImgSleeve = $(".activeZoomSleeve");
 	const buttonImgTag = $(".buttonImg_Tag");
 	const zoomImgTag = $(".activeZoomTag");
-	const buttonSliderContainer = $(".buttonSliderContainer button");
 	const showImageProduct = $("main section");
+	const buttonSlider = [
+		$(".buttonSlider_first"),
+		$(".buttonSlider_second"),
+		$(".buttonSlider_third"),
+	];
 	let defaultIndex = 0;
 
 	navTabLink.on("click", (event) => {
@@ -35,16 +39,22 @@ $(document).ready(() => {
 		zoomImgTag.hide();
 	});
 
-	buttonSliderContainer.on("click", (event) => {
-		if ($(event.currentTarget).hasClass("activeButtonSlider")) {
-			return;
-		}
-		buttonSliderContainer.removeClass("activeButtonSlider");
-		$(event.currentTarget).addClass("activeButtonSlider");
+	const slideImage = (newIndex) => {
+		if (defaultIndex == newIndex) return;
 
-		defaultIndex = (defaultIndex + 1) % showImageProduct.length;
-		showImageProduct.css({
-			transform: `translateY(-${defaultIndex * 100}%)`,
+		defaultIndex =
+			(newIndex + showImageProduct.length) % showImageProduct.length;
+
+		showImageProduct.css("transform", `translateY(-${defaultIndex * 100}%)`);
+
+		buttonSlider.forEach((button, index) => {
+			button.toggleClass("activeButtonSlider", newIndex == index);
+		});
+	};
+
+	buttonSlider.forEach((button, index) => {
+		button.on("click", () => {
+			slideImage(index);
 		});
 	});
 });
