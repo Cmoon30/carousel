@@ -1,4 +1,5 @@
 @use "../variables" as *;
+@use "../utilities/mixins" as *;
 
 header,
 section,
@@ -58,19 +59,11 @@ header {
 			}
 
 			.infoCircle {
-				position: absolute;
-				bottom: -3.5rem;
-				left: -2rem;
-				width: 12rem;
-				aspect-ratio: 1;
+				@include pseudoMixin(none, none, none, 12rem, 80%, -2rem);
 
 				&::after {
-					content: "";
+					@include pseudoMixin("", 50%, none, 12rem, none, none);
 					border-top: 0.5px solid $white;
-					position: absolute;
-					width: 12rem;
-					aspect-ratio: 1;
-					border-radius: 50%;
 					transform: rotate(35deg);
 				}
 

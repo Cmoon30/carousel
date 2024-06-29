@@ -1,8 +1,20 @@
 @use "../variables" as *;
 
-@mixin buttonPseudo($radus, $borderWidth) {
-	content: "";
-	position: absolute;
-	border-radius: $radus;
+// content, border-radius, border-width, width, top & left position
+@mixin pseudoMixin(
+	$content,
+	$radius,
+	$borderWidth,
+	$width,
+	$topPosition,
+	$leftPosition
+) {
+	content: $content;
+	border-radius: $radius;
 	border: $borderWidth solid $white;
+	width: $width;
+	top: $topPosition;
+	left: $leftPosition;
+	position: absolute;
+	aspect-ratio: 1;
 }

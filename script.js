@@ -4,6 +4,9 @@ $(document).ready(() => {
 	const zoomImgSleeve = $(".activeZoomSleeve");
 	const buttonImgTag = $(".buttonImg_Tag");
 	const zoomImgTag = $(".activeZoomTag");
+	const buttonSliderContainer = $(".buttonSliderContainer button");
+	const showImageProduct = $("main section");
+	let defaultIndex = 0;
 
 	navTabLink.on("click", (event) => {
 		event.preventDefault();
@@ -30,5 +33,18 @@ $(document).ready(() => {
 	buttonImgSleeve.add(buttonImgTag).on("mouseleave", () => {
 		zoomImgSleeve.hide();
 		zoomImgTag.hide();
+	});
+
+	buttonSliderContainer.on("click", (event) => {
+		if ($(event.currentTarget).hasClass("activeButtonSlider")) {
+			return;
+		}
+		buttonSliderContainer.removeClass("activeButtonSlider");
+		$(event.currentTarget).addClass("activeButtonSlider");
+
+		defaultIndex = (defaultIndex + 1) % showImageProduct.length;
+		showImageProduct.css({
+			transform: `translateY(-${defaultIndex * 100}%)`,
+		});
 	});
 });

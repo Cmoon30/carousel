@@ -14,7 +14,6 @@ button {
   background-color: #f4f4f4;
 }
 .button_learnMore {
-  background: none;
   color: #f4f4f4;
   text-decoration: underline;
 }
@@ -26,35 +25,39 @@ button {
 }
 .activeNavTab::before {
   content: "";
-  position: absolute;
+  border-radius: 12px;
+  border: none solid #f4f4f4;
+  width: 5px;
   top: 50%;
   left: 0.43rem;
+  position: absolute;
+  aspect-ratio: 1;
   transform: translateY(-50%);
   background-color: #f4f4f4;
-  width: 5px;
-  aspect-ratio: 1;
-  border-radius: 12px;
 }
 
 .buttonImg {
-  position: absolute;
-  width: 4rem;
-  aspect-ratio: 1;
-  border: 2px solid #f4f4f4;
+  content: none;
   border-radius: 50%;
+  border: 2px solid #f4f4f4;
+  width: 4rem;
+  top: none;
+  left: none;
+  position: absolute;
+  aspect-ratio: 1;
   -webkit-backdrop-filter: blur(5px);
           backdrop-filter: blur(5px);
   animation: fadingButton 2s infinite;
 }
 .buttonImg::after {
   content: "";
-  position: absolute;
   border-radius: 50%;
   border: 2px solid #f4f4f4;
   width: 1.5rem;
-  aspect-ratio: 1;
-  left: 27%;
   top: 50%;
+  left: 27%;
+  position: absolute;
+  aspect-ratio: 1;
   transform: translateY(-50%);
   animation: fadingButton 1.5s infinite;
 }
@@ -68,16 +71,34 @@ button {
   animation-delay: 1s;
 }
 
-.buttonSlider {
+.buttonSliderContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
   position: absolute;
-  bottom: 0;
-  right: 5%;
-  background: none;
+  width: -moz-fit-content;
+  width: fit-content;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 1%;
 }
-.buttonSlider > button {
+.buttonSliderContainer .buttonSlider {
   border: 1px solid #f4f4f4;
-  width: 2rem;
+  width: 2.5rem;
   aspect-ratio: 1;
+  border-radius: 50%;
+  font-size: 16px;
+}
+.buttonSliderContainer .buttonSlider_blankButton {
+  width: 0.8rem;
+  cursor: auto;
+}
+.buttonSliderContainer .buttonSlider.activeButtonSlider {
+  width: 3.5rem;
+  background-color: #f4f4f4;
+  color: #0f0f0f;
+  font-size: 18px;
 }
 
 @keyframes fadingButton {
@@ -145,19 +166,25 @@ header section:nth-child(2) span p {
   padding: 0 3rem;
 }
 header section:nth-child(2) .infoCircle {
-  position: absolute;
-  bottom: -3.5rem;
-  left: -2rem;
+  content: none;
+  border-radius: none;
+  border: none solid #f4f4f4;
   width: 12rem;
+  top: 80%;
+  left: -2rem;
+  position: absolute;
   aspect-ratio: 1;
 }
 header section:nth-child(2) .infoCircle::after {
   content: "";
-  border-top: 0.5px solid #f4f4f4;
-  position: absolute;
-  width: 12rem;
-  aspect-ratio: 1;
   border-radius: 50%;
+  border: none solid #f4f4f4;
+  width: 12rem;
+  top: none;
+  left: none;
+  position: absolute;
+  aspect-ratio: 1;
+  border-top: 0.5px solid #f4f4f4;
   transform: rotate(35deg);
 }
 header section:nth-child(2) .infoCircle li {
@@ -205,14 +232,17 @@ header section:nth-child(2) .infoCircle li:nth-child(2)::after {
 
 main {
   position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
-main > img {
+main > section > img {
   -o-object-fit: cover;
      object-fit: cover;
 }
-main > img,
-main .activeContainer {
-  width: 100%;
+main > section > img,
+main > section .activeContainer {
+  min-width: 100%;
   aspect-ratio: 1;
 }
 main .activeContainer {

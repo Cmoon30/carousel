@@ -2,15 +2,20 @@
 
 main {
 	position: relative;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
 
-	& > img {
-		object-fit: cover;
-	}
+	& > section {
+		& > img {
+			object-fit: cover;
+		}
 
-	& > img,
-	.activeContainer {
-		width: 100%;
-		aspect-ratio: 1;
+		& > img,
+		.activeContainer {
+			min-width: 100%;
+			aspect-ratio: 1;
+		}
 	}
 
 	.activeContainer {
