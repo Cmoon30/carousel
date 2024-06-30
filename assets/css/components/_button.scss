@@ -65,10 +65,14 @@ button {
 	align-items: center;
 	gap: 10px;
 	position: absolute;
-	width: fit-content;
+	width: 4.5rem;
 	top: 50%;
-	transform: translateY(-50%);
 	right: 1%;
+	transform: translateY(-50%);
+
+	& > button {
+		transition: ease-out 0.2s;
+	}
 
 	.buttonSlider {
 		border: 1px solid $white;

@@ -25,6 +25,10 @@ main {
 		top: 0;
 		pointer-events: none;
 
+		img {
+			transition: ease-in-out 2s;
+		}
+
 		&,
 		& > * {
 			position: absolute;

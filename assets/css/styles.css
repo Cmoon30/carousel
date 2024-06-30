@@ -78,11 +78,13 @@ button {
   align-items: center;
   gap: 10px;
   position: absolute;
-  width: -moz-fit-content;
-  width: fit-content;
+  width: 4.5rem;
   top: 50%;
-  transform: translateY(-50%);
   right: 1%;
+  transform: translateY(-50%);
+}
+.buttonSliderContainer > button {
+  transition: ease-out 0.2s;
 }
 .buttonSliderContainer .buttonSlider {
   border: 1px solid #f4f4f4;
@@ -253,6 +255,9 @@ main > section .imgContainer {
 main .imgContainer {
   top: 0;
   pointer-events: none;
+}
+main .imgContainer img {
+  transition: ease-in-out 2s;
 }
 main .imgContainer, main .imgContainer > * {
   position: absolute;
