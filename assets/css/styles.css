@@ -63,11 +63,11 @@ button {
   animation: fadingButton 1.5s infinite;
 }
 .buttonImg_Sleeve {
-  bottom: 13rem;
+  bottom: 23rem;
   right: 11rem;
 }
 .buttonImg_Tag {
-  bottom: 6rem;
+  bottom: 16rem;
   right: 19.5rem;
   animation-delay: 1s;
 }
@@ -238,36 +238,36 @@ main {
   flex-direction: column;
 }
 main > section {
-  transition: ease-in 0.5s;
+  position: relative;
 }
 main > section > img {
   -o-object-fit: cover;
      object-fit: cover;
 }
 main > section > img,
-main > section .activeContainer {
+main > section .imgContainer {
   min-width: 100%;
   height: 100%;
   aspect-ratio: 1;
 }
-main .activeContainer {
+main .imgContainer {
   top: 0;
   pointer-events: none;
 }
-main .activeContainer, main .activeContainer > * {
+main .imgContainer, main .imgContainer > * {
   position: absolute;
 }
-main .activeContainer img {
+main .imgContainer img {
   width: 50%;
   aspect-ratio: 20/9;
   display: none;
 }
-main .activeContainer .activeZoomSleeve {
+main .imgContainer .imgZoomSleeve {
   top: 35%;
   transform: translateY(-50%);
   right: 30%;
 }
-main .activeContainer .activeZoomTag {
+main .imgContainer .imgZoomTag {
   bottom: 40%;
   right: 40%;
 }
@@ -301,5 +301,5 @@ body > *:nth-child(1) {
   width: 40%;
 }
 body > *:nth-child(2) {
-  width: auto;
+  width: 60%;
 }/*# sourceMappingURL=styles.css.map */

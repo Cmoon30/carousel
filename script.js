@@ -1,15 +1,11 @@
 $(document).ready(() => {
 	const navTabLink = $("ul a");
 	const buttonImgSleeve = $(".buttonImg_Sleeve");
-	const zoomImgSleeve = $(".activeZoomSleeve");
+	const zoomImgSleeve = $(".imgZoomSleeve");
 	const buttonImgTag = $(".buttonImg_Tag");
-	const zoomImgTag = $(".activeZoomTag");
+	const zoomImgTag = $(".imgZoomTag");
 	const showImageProduct = $("main section");
-	const buttonSlider = [
-		$(".buttonSlider_first"),
-		$(".buttonSlider_second"),
-		$(".buttonSlider_third"),
-	];
+	const buttonSlider = [$(".buttonSlider_first"), $(".buttonSlider_second")];
 	let defaultIndex = 0;
 
 	navTabLink.on("click", (event) => {

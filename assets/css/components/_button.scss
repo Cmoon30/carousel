@@ -48,16 +48,17 @@ button {
 	}
 
 	&_Sleeve {
-		bottom: 13rem;
+		bottom: 23rem;
 		right: 11rem;
 	}
 
 	&_Tag {
-		bottom: 6rem;
+		bottom: 16rem;
 		right: 19.5rem;
 		animation-delay: 1s;
 	}
 }
+
 .buttonSliderContainer {
 	display: flex;
 	flex-direction: column;
