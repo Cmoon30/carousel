@@ -60,14 +60,11 @@ button {
 }
 
 .buttonSliderContainer {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 10px;
+	@include flexBoxMixin(column, center, 10px);
 	position: absolute;
-	width: 4.5rem;
+	width: fit-content;
 	top: 50%;
-	right: 1%;
+	right: 3%;
 	transform: translateY(-50%);
 
 	& > button {
@@ -76,21 +73,14 @@ button {
 
 	.buttonSlider {
 		border: 1px solid $white;
-		width: 2.5rem;
-		aspect-ratio: 1;
-		border-radius: 50%;
+		width: 0.5rem;
+		height: 1.5rem;
+		border-radius: 12px;
 		font-size: 16px;
 
-		&_blankButton {
-			width: 0.8rem;
-			cursor: auto;
-		}
-
 		&.activeButtonSlider {
-			width: 3.5rem;
+			height: 2.5rem;
 			background-color: $white;
-			color: $black;
-			font-size: 18px;
 		}
 	}
 }

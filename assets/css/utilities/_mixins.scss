@@ -3,18 +3,25 @@
 // content, border-radius, border-width, width, top & left position
 @mixin pseudoMixin(
 	$content,
-	$radius,
+	$borderRadius,
 	$borderWidth,
 	$width,
 	$topPosition,
 	$leftPosition
 ) {
 	content: $content;
-	border-radius: $radius;
+	border-radius: $borderRadius;
 	border: $borderWidth solid $white;
 	width: $width;
 	top: $topPosition;
 	left: $leftPosition;
 	position: absolute;
 	aspect-ratio: 1;
+}
+
+@mixin flexBoxMixin($flexDirection, $alignItems, $gap) {
+	display: flex;
+	flex-direction: $flexDirection;
+	align-items: $alignItems;
+	gap: $gap;
 }
