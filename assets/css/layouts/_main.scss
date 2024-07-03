@@ -14,8 +14,8 @@ main {
 	& > section {
 		position: relative;
 
-		& > img,
-		.imgContainer img {
+		& > img {
+			user-select: none;
 			object-fit: cover;
 			min-width: 100%;
 		}
@@ -25,12 +25,45 @@ main {
 		cursor: pointer;
 		bottom: 11rem;
 		right: 3%;
-		height: 8rem;
-		@include pseudoMixin(none, 12px, 1px, 10rem, none, none);
-		@include flexBoxMixin(none, none, 5px);
+		position: absolute;
+		@include flexBoxMixin(column, center, center);
+		overflow: visible;
+
+		&:hover > img {
+			filter: brightness(70%);
+		}
 
 		&:hover::after {
-			opacity: 1;
+			display: block;
+		}
+
+		&::after {
+			display: none;
+			@include pseudoMixin("show more", none, none, none, 50%, none);
+			text-wrap: nowrap;
+			height: 20%;
+			transform: translateY(-50%);
+			font-size: 18px;
+			color: $white;
+			z-index: 2;
+		}
+
+		& > img {
+			border: 1px solid $white;
+			object-fit: cover;
+			aspect-ratio: 10 / 6;
+			border-radius: 12px;
+
+			&:nth-child(1) {
+				width: 10rem;
+				z-index: 1;
+			}
+
+			&:nth-child(2) {
+				position: absolute;
+				top: -0.7rem;
+				width: 9rem;
+			}
 		}
 	}
 }

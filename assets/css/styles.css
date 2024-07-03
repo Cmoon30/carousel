@@ -240,8 +240,10 @@ main .imgContainer {
 main > section {
   position: relative;
 }
-main > section > img,
-main > section .imgContainer img {
+main > section > img {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   -o-object-fit: cover;
      object-fit: cover;
   min-width: 100%;
@@ -250,22 +252,51 @@ main .imgContainer {
   cursor: pointer;
   bottom: 11rem;
   right: 3%;
-  height: 8rem;
-  content: none;
-  border-radius: 12px;
-  border: 1px solid #f4f4f4;
-  width: 10rem;
-  top: none;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: center;
+  overflow: visible;
+}
+main .imgContainer:hover > img {
+  filter: brightness(70%);
+}
+main .imgContainer:hover::after {
+  display: block;
+}
+main .imgContainer::after {
+  display: none;
+  content: "show more";
+  border-radius: none;
+  border: none solid #f4f4f4;
+  width: none;
+  top: 50%;
   left: none;
   position: absolute;
   aspect-ratio: 1;
-  display: flex;
-  flex-direction: none;
-  align-items: none;
-  gap: 5px;
+  text-wrap: nowrap;
+  height: 20%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #f4f4f4;
+  z-index: 2;
 }
-main .imgContainer:hover::after {
-  opacity: 1;
+main .imgContainer > img {
+  border: 1px solid #f4f4f4;
+  -o-object-fit: cover;
+     object-fit: cover;
+  aspect-ratio: 10/6;
+  border-radius: 12px;
+}
+main .imgContainer > img:nth-child(1) {
+  width: 10rem;
+  z-index: 1;
+}
+main .imgContainer > img:nth-child(2) {
+  position: absolute;
+  top: -0.7rem;
+  width: 9rem;
 }
 
 * {
