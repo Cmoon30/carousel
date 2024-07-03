@@ -298,6 +298,29 @@ main .imgContainer > img:nth-child(2) {
   top: -0.7rem;
   width: 9rem;
 }
+main .imgContainerSlidin {
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
+  bottom: 11rem;
+  position: absolute;
+  height: 18%;
+  width: 97%;
+  right: 3%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  overflow: visible;
+}
+main .imgContainerSlidin > img {
+  cursor: pointer;
+  border: 1px solid #f4f4f4;
+  border-radius: 12px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
 
 * {
   padding: 0;

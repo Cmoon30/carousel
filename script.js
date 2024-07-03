@@ -53,4 +53,10 @@ $(document).ready(() => {
 			slideImage(index);
 		});
 	});
+
+	const imgContainer = $(".imgContainer");
+
+	imgContainer.on("click", () => {
+		imgContainer.toggleClass("imgContainerSlidin imgContainer");
+	});
 });
