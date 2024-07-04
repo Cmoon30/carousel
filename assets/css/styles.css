@@ -241,31 +241,45 @@ main > section {
   position: relative;
 }
 main > section > img {
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
   -o-object-fit: cover;
      object-fit: cover;
   min-width: 100%;
+  min-height: 100dvh;
 }
 main .imgContainer {
-  cursor: pointer;
-  bottom: 11rem;
   right: 3%;
   position: absolute;
+  overflow: visible;
+}
+main .imgContainer > img {
+  border-radius: 12px;
+  border: 1px solid #f4f4f4;
+  -o-object-fit: cover;
+     object-fit: cover;
+  aspect-ratio: 10/6;
+}
+main .imgContainer .buttonCloseSlider {
+  cursor: pointer;
+  position: absolute;
+  top: 3%;
+  right: 3%;
+}
+main .imgContainerActive {
+  bottom: 12rem;
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: center;
-  overflow: visible;
+  gap: none;
+  animation: fadeIn 0.5s;
 }
-main .imgContainer:hover > img {
+main .imgContainerActive:hover > img {
   filter: brightness(70%);
 }
-main .imgContainer:hover::after {
+main .imgContainerActive:hover::after {
   display: block;
 }
-main .imgContainer::after {
+main .imgContainerActive::after {
   display: none;
   content: "show more";
   border-radius: none;
@@ -282,46 +296,54 @@ main .imgContainer::after {
   color: #f4f4f4;
   z-index: 2;
 }
-main .imgContainer > img {
-  border: 1px solid #f4f4f4;
-  -o-object-fit: cover;
-     object-fit: cover;
-  aspect-ratio: 10/6;
-  border-radius: 12px;
-}
-main .imgContainer > img:nth-child(1) {
+main .imgContainerActive > img:nth-child(1) {
   width: 10rem;
   z-index: 1;
 }
-main .imgContainer > img:nth-child(2) {
+main .imgContainerActive > img:nth-child(2) {
   position: absolute;
   top: -0.7rem;
   width: 9rem;
 }
-main .imgContainerSlidin {
-  -webkit-backdrop-filter: blur(2px);
-          backdrop-filter: blur(2px);
-  bottom: 11rem;
-  position: absolute;
-  height: 18%;
-  width: 97%;
-  right: 3%;
+main .imgContainerShow {
+  padding: 2rem 4rem;
+  background-color: rgba(15, 15, 15, 0.2);
+  -webkit-backdrop-filter: blur(1px);
+          backdrop-filter: blur(1px);
+  height: 20%;
+  width: 100%;
+  right: 0;
+  bottom: 18%;
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 10px;
-  overflow: visible;
+  justify-content: end;
+  animation: slideInImage 0.5s;
 }
-main .imgContainerSlidin > img {
+main .imgContainerShow > img {
   cursor: pointer;
-  border: 1px solid #f4f4f4;
-  border-radius: 12px;
-  -o-object-fit: cover;
-     object-fit: cover;
-  width: 100%;
+  position: unset;
   height: 100%;
+  width: 12rem;
 }
 
+@keyframes slideInImage {
+  to {
+    transform: translateY(0);
+  }
+  from {
+    transform: translateY(100%);
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 * {
   padding: 0;
   margin: 0;
@@ -332,6 +354,12 @@ main .imgContainerSlidin > img {
 
 a {
   text-decoration: none;
+}
+
+img {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 
 li {

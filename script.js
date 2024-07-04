@@ -1,9 +1,5 @@
 $(document).ready(() => {
 	const navTabLink = $("ul a");
-	const buttonImgSleeve = $(".buttonImg_Sleeve");
-	const zoomImgSleeve = $(".imgZoomSleeve");
-	const buttonImgTag = $(".buttonImg_Tag");
-	const zoomImgTag = $(".imgZoomTag");
 	const showImageProduct = $("main section");
 	const buttonSlider = [$(".buttonSlider_first"), $(".buttonSlider_second")];
 	let defaultIndex = 0;
@@ -14,26 +10,10 @@ $(document).ready(() => {
 		$(event.currentTarget).addClass("activeNavTab");
 	});
 
-	buttonShowImage = (button, toggleZoomShow, toggleZoomHide) => {
-		button
-			.on("click", (event) => {
-				toggleZoomShow.toggle();
-				toggleZoomHide.hide();
-				event.stopPropagation();
-			})
-			.on("mouseenter", () => {
-				toggleZoomShow.show();
-				toggleZoomHide.hide();
-			});
+	const fadeInAnimation = (style, animate) => {
+		style.css("animation", "none").offset();
+		style.css("animation", `${animate} .5s`);
 	};
-
-	buttonShowImage(buttonImgSleeve, zoomImgSleeve, zoomImgTag);
-	buttonShowImage(buttonImgTag, zoomImgTag, zoomImgSleeve);
-
-	buttonImgSleeve.add(buttonImgTag).on("mouseleave", () => {
-		zoomImgSleeve.hide();
-		zoomImgTag.hide();
-	});
 
 	const slideImage = (newIndex) => {
 		if (defaultIndex == newIndex) return;
@@ -41,10 +21,14 @@ $(document).ready(() => {
 		defaultIndex =
 			(newIndex + showImageProduct.length) % showImageProduct.length;
 
-		showImageProduct.css("transform", `translateY(-${defaultIndex * 100}%)`);
+		showImageProduct.css({
+			transform: `translateY(-${defaultIndex * 100}%)`,
+		});
+		fadeInAnimation(showImageProduct, `fadeIn`);
 
 		buttonSlider.forEach((button, index) => {
 			button.toggleClass("activeButtonSlider", newIndex == index);
+			closeSlider();
 		});
 	};
 
@@ -55,8 +39,20 @@ $(document).ready(() => {
 	});
 
 	const imgContainer = $(".imgContainer");
+	const buttonCloseSlider = $(".buttonCloseSlider");
+
+	const closeSlider = () => {
+		imgContainer.removeClass("imgContainerShow").addClass("imgContainerActive");
+		buttonCloseSlider.hide();
+	};
 
 	imgContainer.on("click", () => {
-		imgContainer.toggleClass("imgContainerSlidin imgContainer");
+		imgContainer.addClass("imgContainerShow").removeClass("imgContainerActive");
+		buttonCloseSlider.show();
+	});
+
+	buttonCloseSlider.on("click", (event) => {
+		event.stopPropagation();
+		closeSlider();
 	});
 });
