@@ -10,21 +10,19 @@ $(document).ready(() => {
 		$(event.currentTarget).addClass("activeNavTab");
 	});
 
-	const fadeInAnimation = (style, animate) => {
-		style.css("animation", "none").offset();
-		style.css("animation", `${animate} .5s`);
-	};
-
 	const slideImage = (newIndex) => {
 		if (defaultIndex == newIndex) return;
 
 		defaultIndex =
 			(newIndex + showImageProduct.length) % showImageProduct.length;
 
-		showImageProduct.css({
-			transform: `translateY(-${defaultIndex * 100}%)`,
-		});
-		fadeInAnimation(showImageProduct, `fadeIn`);
+		showImageProduct
+			.css({
+				transform: `translateY(-${defaultIndex * 100}%)`,
+				animation: "none",
+			})
+			.offset();
+		showImageProduct.css("animation", `fadeIn .5s`);
 
 		buttonSlider.forEach((button, index) => {
 			button.toggleClass("activeButtonSlider", newIndex == index);
