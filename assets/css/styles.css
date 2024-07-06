@@ -169,7 +169,7 @@ header section:nth-child(2) .infoCircle {
   border: none solid #f4f4f4;
   width: 12rem;
   top: 80%;
-  left: -2rem;
+  left: -2.5rem;
   position: absolute;
   aspect-ratio: 1;
 }
@@ -185,47 +185,54 @@ header section:nth-child(2) .infoCircle::after {
   border-top: 0.5px solid #f4f4f4;
   transform: rotate(35deg);
 }
-header section:nth-child(2) .infoCircle li {
+header section:nth-child(2) .infoCircle div {
   position: absolute;
-  width: -moz-fit-content;
-  width: fit-content;
+  display: flex;
+  gap: 5px;
 }
-header section:nth-child(2) .infoCircle li::before, header section:nth-child(2) .infoCircle li::after {
+header section:nth-child(2) .infoCircle div::before, header section:nth-child(2) .infoCircle div::after {
   content: "";
   aspect-ratio: 1;
 }
-header section:nth-child(2) .infoCircle li::before {
+header section:nth-child(2) .infoCircle div::before {
   display: inline-block;
   width: 1.5rem;
-  margin-bottom: -0.3rem;
+  margin: 0 0 2rem;
 }
-header section:nth-child(2) .infoCircle li::after {
+header section:nth-child(2) .infoCircle div::after {
   position: absolute;
   width: 0.5rem;
   background-color: #f4f4f4;
   border-radius: 50%;
 }
-header section:nth-child(2) .infoCircle li:nth-child(1) {
-  top: -3.5rem;
-  right: -13rem;
+header section:nth-child(2) .infoCircle div li {
+  display: none;
+  text-wrap: nowrap;
 }
-header section:nth-child(2) .infoCircle li:nth-child(1)::before {
+header section:nth-child(2) .infoCircle div:nth-child(1) {
+  top: -3.5rem;
+  left: 10rem;
+}
+header section:nth-child(2) .infoCircle div:nth-child(1)::before {
   background: url(/assets/imgSource/clothesIcon.png) no-repeat center/cover;
 }
-header section:nth-child(2) .infoCircle li:nth-child(1)::after {
+header section:nth-child(2) .infoCircle div:nth-child(1)::after {
   left: -3rem;
   top: 3.31rem;
 }
-header section:nth-child(2) .infoCircle li:nth-child(2) {
+header section:nth-child(2) .infoCircle div:nth-child(2) {
   top: 3rem;
-  right: -20rem;
+  left: 13.8rem;
 }
-header section:nth-child(2) .infoCircle li:nth-child(2)::before {
+header section:nth-child(2) .infoCircle div:nth-child(2)::before {
   background: url(/assets/imgSource/recyclingIcon.png) no-repeat center/cover;
 }
-header section:nth-child(2) .infoCircle li:nth-child(2)::after {
-  left: -2.2rem;
+header section:nth-child(2) .infoCircle div:nth-child(2)::after {
   top: 1.6rem;
+  left: -2.2rem;
+}
+header section:nth-child(2) .infoCircle .activeInfoCircle {
+  display: block;
 }
 
 main {

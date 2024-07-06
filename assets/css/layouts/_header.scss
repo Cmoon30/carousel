@@ -59,7 +59,7 @@ header {
 			}
 
 			.infoCircle {
-				@include pseudoMixin(none, none, none, 12rem, 80%, -2rem);
+				@include pseudoMixin(none, none, none, 12rem, 80%, -2.5rem);
 
 				&::after {
 					@include pseudoMixin("", 50%, none, 12rem, none, none);
@@ -67,21 +67,25 @@ header {
 					transform: rotate(35deg);
 				}
 
-				li {
+				div {
 					position: absolute;
-					width: fit-content;
+					display: flex;
+					gap: 5px;
 
 					&::before,
 					&::after {
 						content: "";
 						aspect-ratio: 1;
 					}
+
+					// icons in list
 					&::before {
 						display: inline-block;
 						width: 1.5rem;
-						margin-bottom: -0.3rem;
+						margin: 0 0 2rem;
 					}
 
+					// small circle dot in  list
 					&::after {
 						position: absolute;
 						width: 0.5rem;
@@ -89,35 +93,47 @@ header {
 						border-radius: 50%;
 					}
 
+					li {
+						display: none;
+						text-wrap: nowrap;
+					}
+
+					// fist child container
 					&:nth-child(1) {
 						top: -3.5rem;
-						right: -13rem;
+						left: 10rem;
 
 						&::before {
 							background: url(/assets/imgSource/clothesIcon.png) no-repeat
 								center/ cover;
 						}
 
+						// small circle dot in list
 						&::after {
 							left: -3rem;
 							top: 3.31rem;
 						}
 					}
 
+					// second child container
 					&:nth-child(2) {
 						top: 3rem;
-						right: -20rem;
+						left: 13.8rem;
 
 						&::before {
 							background: url(/assets/imgSource/recyclingIcon.png) no-repeat
 								center/ cover;
 						}
 
+						// small circle dot in list
 						&::after {
-							left: -2.2rem;
 							top: 1.6rem;
+							left: -2.2rem;
 						}
 					}
+				}
+				.activeInfoCircle {
+					display: block;
 				}
 			}
 		}

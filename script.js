@@ -3,6 +3,7 @@ $(document).ready(() => {
 	const showImageProduct = $("main section");
 	const buttonSlider = [$(".buttonSlider_first"), $(".buttonSlider_second")];
 	let defaultIndex = 0;
+	const infoCircleToggle = $(".infoCircle div li");
 
 	navTabLink.on("click", (event) => {
 		event.preventDefault();
@@ -23,6 +24,8 @@ $(document).ready(() => {
 			})
 			.offset();
 		showImageProduct.css("animation", `fadeIn .5s`);
+
+		infoCircleToggle.toggleClass("activeInfoCircle");
 
 		buttonSlider.forEach((button, index) => {
 			button.toggleClass("activeButtonSlider", newIndex == index);
