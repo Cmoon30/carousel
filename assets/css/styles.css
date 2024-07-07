@@ -210,7 +210,7 @@ header section:nth-child(2) .infoCircle div li {
   text-wrap: nowrap;
 }
 header section:nth-child(2) .infoCircle div:nth-child(1) {
-  top: -3.5rem;
+  top: -3.4rem;
   left: 10rem;
 }
 header section:nth-child(2) .infoCircle div:nth-child(1)::before {
