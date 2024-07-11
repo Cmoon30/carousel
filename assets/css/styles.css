@@ -18,24 +18,6 @@ button {
   text-decoration: underline;
 }
 
-.activeNavTab {
-  border: 1px solid #f4f4f4;
-  border-radius: 50px;
-  position: relative;
-}
-.activeNavTab::before {
-  content: "";
-  border-radius: 12px;
-  border: none solid #f4f4f4;
-  width: 5px;
-  top: 50%;
-  left: 0.43rem;
-  position: absolute;
-  aspect-ratio: 1;
-  transform: translateY(-50%);
-  background-color: #f4f4f4;
-}
-
 .buttonImg {
   content: none;
   border-radius: 50%;
@@ -76,12 +58,15 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: none;
   gap: 10px;
-  position: absolute;
-  width: -moz-fit-content;
-  width: fit-content;
+  position: fixed;
   top: 50%;
   right: 3%;
+  bottom: none;
+  left: none;
+  width: -moz-fit-content;
+  width: fit-content;
   transform: translateY(-50%);
 }
 .buttonSliderContainer > button {
@@ -99,56 +84,107 @@ button {
   background-color: #f4f4f4;
 }
 
-@keyframes fadingButton {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
+.closeButton img,
+.menuButton img {
+  width: 1.5rem;
 }
-header,
+
 section,
-section > ul {
+section > .navLinks {
   display: flex;
 }
 
 header {
+  display: flex;
   flex-direction: column;
+  align-items: none;
+  justify-content: none;
+  gap: 30px;
   padding: 0 15px 15px;
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
-  gap: 30px;
+  z-index: 1;
 }
 header section {
   align-items: center;
   overflow: hidden;
 }
-header section ul {
+header section .navLinks,
+header section .sideMenu {
+  pointer-events: all;
+}
+header section .navLinks {
   gap: 5px;
 }
-header section ul a {
+header section .navLinks .activeNavTab {
+  border: 1px solid #f4f4f4;
+  border-radius: 50px;
+  position: relative;
+}
+header section .navLinks .activeNavTab::before {
+  content: "";
+  border-radius: 12px;
+  border: none solid #f4f4f4;
+  width: 5px;
+  top: 50%;
+  left: 0.43rem;
+  position: absolute;
+  aspect-ratio: 1;
+  transform: translateY(-50%);
+  background-color: #f4f4f4;
+}
+header section .navLinks a {
   padding: 4px 11px 5px 15px;
   border: 1px solid transparent;
+}
+header section .sideMenu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: none;
+  left: none;
+  background-color: rgba(15, 15, 15, 0.5);
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
+  display: block !important;
+  height: 100%;
+  width: 50%;
+  z-index: 1;
+  text-align: center;
+}
+header section .sideMenu > * {
+  width: 100%;
+}
+header section .sideMenu > *:nth-child(n+2) {
+  margin-bottom: 15px;
+}
+header section .sideMenu .closeMenu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: end;
+  gap: none;
+  padding-right: 15px;
+  height: 58px;
 }
 header section h2 {
   font-size: 62px;
   line-height: 1;
+  width: 30rem;
 }
 header section:nth-child(1) {
   justify-content: space-between;
   height: 70px;
 }
 header section:nth-child(2) {
-  position: relative;
-  height: 100%;
+  display: flex;
   flex-direction: column;
   align-items: start;
+  justify-content: none;
   gap: 30px;
+  position: relative;
+  height: 100%;
 }
 header section:nth-child(2) span,
 header section:nth-child(2) p {
@@ -236,27 +272,37 @@ header section:nth-child(2) .infoCircle .activeInfoCircle {
 }
 
 main {
-  position: relative;
   display: flex;
   flex-direction: column;
+  align-items: none;
+  justify-content: none;
+  gap: none;
+  position: relative;
+  height: 100%;
 }
-main,
+main, main > section,
 main .imgContainer {
   overflow: hidden;
 }
 main > section {
   position: relative;
+  min-height: 100%;
 }
 main > section > img {
   -o-object-fit: cover;
      object-fit: cover;
-  min-width: 100%;
-  min-height: 100dvh;
+  width: 100%;
+  aspect-ratio: 1;
 }
 main .imgContainer {
-  right: 3%;
   position: absolute;
+  top: none;
+  right: 3%;
+  bottom: 5%;
+  left: none;
   overflow: visible;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 main .imgContainer > img {
   border-radius: 12px;
@@ -270,13 +316,18 @@ main .imgContainer .buttonCloseSlider {
   position: absolute;
   top: 3%;
   right: 3%;
+  bottom: none;
+  left: none;
+}
+main .show {
+  display: block;
 }
 main .imgContainerActive {
-  bottom: 12rem;
   cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: none;
   gap: none;
   animation: fadeIn 0.5s;
 }
@@ -287,7 +338,6 @@ main .imgContainerActive:hover::after {
   display: block;
 }
 main .imgContainerActive::after {
-  display: none;
   content: "show more";
   border-radius: none;
   border: none solid #f4f4f4;
@@ -296,36 +346,41 @@ main .imgContainerActive::after {
   left: none;
   position: absolute;
   aspect-ratio: 1;
+  display: none;
   text-wrap: nowrap;
   height: 20%;
   transform: translateY(-50%);
   font-size: 18px;
   color: #f4f4f4;
-  z-index: 2;
 }
 main .imgContainerActive > img:nth-child(1) {
-  width: 10rem;
-  z-index: 1;
+  width: 9rem;
 }
 main .imgContainerActive > img:nth-child(2) {
   position: absolute;
-  top: -0.7rem;
-  width: 9rem;
+  top: 0.5rem;
+  right: none;
+  bottom: none;
+  left: none;
+  width: 10rem;
 }
 main .imgContainerShow {
-  padding: 2rem 4rem;
-  background-color: rgba(15, 15, 15, 0.2);
-  -webkit-backdrop-filter: blur(1px);
-          backdrop-filter: blur(1px);
-  height: 20%;
-  width: 100%;
+  position: absolute;
+  top: none;
   right: 0;
-  bottom: 18%;
+  bottom: 0;
+  left: none;
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 10px;
   justify-content: end;
+  gap: 10px;
+  padding: 2rem 4rem 2.5rem;
+  background-color: rgba(15, 15, 15, 0.2);
+  -webkit-backdrop-filter: blur(1px);
+          backdrop-filter: blur(1px);
+  height: 12rem;
+  width: 100%;
   animation: slideInImage 0.5s;
 }
 main .imgContainerShow > img {
@@ -376,8 +431,19 @@ li {
 }
 
 body {
-  height: 100vh;
+  position: relative;
+  top: none;
+  right: none;
+  bottom: none;
+  left: 50%;
   display: flex;
+  flex-direction: none;
+  align-items: none;
+  justify-content: center;
+  gap: none;
+  height: 100vh;
+  max-width: 1500px;
+  transform: translateX(-50%);
   overflow: hidden;
   background-color: #0f0f0f;
 }
@@ -388,5 +454,30 @@ body > *:nth-child(1) {
   width: 40%;
 }
 body > *:nth-child(2) {
-  width: 60%;
+  width: 100%;
+}
+
+@media screen and (max-width: 1284px) {
+  header {
+    position: fixed;
+    top: 0;
+    right: none;
+    bottom: none;
+    left: 50%;
+    width: 30rem;
+    transform: translateX(-50%);
+    width: 100% !important;
+    background-color: rgba(15, 15, 15, 0.2);
+    z-index: 1;
+    pointer-events: none;
+  }
+}
+@media screen and (max-width: 767px) {
+  header section .navLinks {
+    display: none;
+  }
+  header section .menuButton {
+    pointer-events: all;
+    display: block;
+  }
 }/*# sourceMappingURL=styles.css.map */

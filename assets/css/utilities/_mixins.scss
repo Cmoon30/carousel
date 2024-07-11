@@ -19,9 +19,18 @@
 	aspect-ratio: 1;
 }
 
-@mixin flexBoxMixin($flexDirection, $alignItems, $gap) {
+@mixin flexBoxMixin($flexDirection, $alignItems, $justifyContent, $gap) {
 	display: flex;
 	flex-direction: $flexDirection;
 	align-items: $alignItems;
+	justify-content: $justifyContent;
 	gap: $gap;
+}
+
+@mixin positionMixin($position, $top, $right, $bottom, $left) {
+	position: $position;
+	top: $top;
+	right: $right;
+	bottom: $bottom;
+	left: $left;
 }

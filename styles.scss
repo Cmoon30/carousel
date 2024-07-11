@@ -21,8 +21,11 @@ li {
 }
 
 body {
+	@include positionMixin(relative, none, none, none, 50%);
+	@include flexBoxMixin(none, none, center, none);
 	height: 100vh;
-	display: flex;
+	max-width: 1500px;
+	transform: translateX(-50%);
 	overflow: hidden;
 	background-color: $black;
 
@@ -36,10 +39,32 @@ body {
 		}
 
 		&:nth-child(2) {
-			width: 60%;
+			width: 100%;
 		}
 	}
 }
 
-@media screen and (min-width: 1230px) {
+@media screen and (max-width: 1284px) {
+	header {
+		@include positionMixin(fixed, 0, none, none, 50%);
+		width: 30rem;
+		transform: translateX(-50%);
+		width: 100% !important;
+		background-color: rgba($black, 0.2);
+		z-index: 1;
+		pointer-events: none;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	header section {
+		.navLinks {
+			display: none;
+		}
+
+		.menuButton {
+			pointer-events: all;
+			display: block;
+		}
+	}
 }

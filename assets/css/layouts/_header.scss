@@ -1,24 +1,40 @@
 @use "../variables" as *;
 @use "../utilities/mixins" as *;
 
-header,
 section,
-section > ul {
+section > .navLinks {
 	display: flex;
 }
 
 header {
-	flex-direction: column;
+	@include flexBoxMixin(column, none, none, 30px);
 	padding: 0 15px 15px;
 	user-select: none;
-	gap: 30px;
+	z-index: 1;
 
 	section {
 		align-items: center;
 		overflow: hidden;
 
-		ul {
+		.navLinks,
+		.sideMenu {
+			pointer-events: all;
+		}
+
+		.navLinks {
 			gap: 5px;
+
+			.activeNavTab {
+				border: 1px solid $white;
+				border-radius: 50px;
+				position: relative;
+
+				&::before {
+					@include pseudoMixin("", 12px, none, 5px, 50%, 0.43rem);
+					transform: translateY(-50%);
+					background-color: $white;
+				}
+			}
 
 			a {
 				padding: 4px 11px 5px 15px;
@@ -26,22 +42,48 @@ header {
 			}
 		}
 
+		.sideMenu {
+			@include positionMixin(fixed, 0, 0, none, none);
+			background-color: rgba($black, 0.5);
+			backdrop-filter: blur(2px);
+			display: block !important;
+			height: 100%;
+			width: 50%;
+			z-index: 1;
+			text-align: center;
+
+			& > * {
+				width: 100%;
+
+				&:nth-child(n + 2) {
+					margin-bottom: 15px;
+				}
+			}
+
+			.closeMenu {
+				@include flexBoxMixin(row, center, end, none);
+				padding-right: 15px;
+				height: 58px;
+			}
+		}
+
 		h2 {
 			font-size: 62px;
 			line-height: 1;
+			width: 30rem;
 		}
 
+		// navigation bar
 		&:nth-child(1) {
 			justify-content: space-between;
 			height: 70px;
 		}
 
+		// content
 		&:nth-child(2) {
+			@include flexBoxMixin(column, start, none, 30px);
 			position: relative;
 			height: 100%;
-			flex-direction: column;
-			align-items: start;
-			gap: 30px;
 
 			span,
 			p {

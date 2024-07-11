@@ -23,18 +23,7 @@ button {
 	}
 }
 
-.activeNavTab {
-	border: 1px solid $white;
-	border-radius: 50px;
-	position: relative;
-
-	&::before {
-		@include pseudoMixin("", 12px, none, 5px, 50%, 0.43rem);
-		transform: translateY(-50%);
-		background-color: $white;
-	}
-}
-
+// buttons for show more image
 .buttonImg {
 	@include pseudoMixin(none, 50%, 2px, 4rem, none, none);
 	backdrop-filter: blur(5px);
@@ -59,12 +48,11 @@ button {
 	}
 }
 
+// button for slider image
 .buttonSliderContainer {
-	@include flexBoxMixin(column, center, 10px);
-	position: absolute;
+	@include flexBoxMixin(column, center, none, 10px);
+	@include positionMixin(fixed, 50%, 3%, none, none);
 	width: fit-content;
-	top: 50%;
-	right: 3%;
 	transform: translateY(-50%);
 
 	& > button {
@@ -85,14 +73,9 @@ button {
 	}
 }
 
-@keyframes fadingButton {
-	0% {
-		opacity: 0;
-	}
-	50% {
-		opacity: 1;
-	}
-	100% {
-		opacity: 0;
+.closeButton,
+.menuButton {
+	img {
+		width: 1.5rem;
 	}
 }

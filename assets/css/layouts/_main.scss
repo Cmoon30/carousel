@@ -2,29 +2,32 @@
 @use "../utilities/mixins" as *;
 
 main {
+	@include flexBoxMixin(column, none, none, none);
 	position: relative;
-	display: flex;
-	flex-direction: column;
+	height: 100%;
 
 	&,
+	& > section,
 	.imgContainer {
 		overflow: hidden;
 	}
 
 	& > section {
 		position: relative;
+		min-height: 100%;
 
 		& > img {
 			object-fit: cover;
-			min-width: 100%;
-			min-height: 100dvh;
+			width: 100%;
+			aspect-ratio: 1;
 		}
 	}
 
+	// show more image contain
 	.imgContainer {
-		right: 3%;
-		position: absolute;
+		@include positionMixin(absolute, none, 3%, 5%, none);
 		overflow: visible;
+		height: fit-content;
 
 		& > img {
 			border-radius: 12px;
@@ -35,16 +38,17 @@ main {
 
 		.buttonCloseSlider {
 			cursor: pointer;
-			position: absolute;
-			top: 3%;
-			right: 3%;
+			@include positionMixin(absolute, 3%, 3%, none, none);
 		}
 	}
 
+	.show {
+		display: block;
+	}
+
 	.imgContainerActive {
-		bottom: 12rem;
 		cursor: pointer;
-		@include flexBoxMixin(column, center, none);
+		@include flexBoxMixin(column, center, none, none);
 		animation: fadeIn 0.5s;
 
 		&:hover > img {
@@ -56,40 +60,35 @@ main {
 		}
 
 		&::after {
-			display: none;
 			@include pseudoMixin("show more", none, none, none, 50%, none);
+			display: none;
 			text-wrap: nowrap;
 			height: 20%;
 			transform: translateY(-50%);
 			font-size: 18px;
 			color: $white;
-			z-index: 2;
 		}
 
 		& > img {
 			&:nth-child(1) {
-				width: 10rem;
-				z-index: 1;
+				width: 9rem;
 			}
 
 			&:nth-child(2) {
-				position: absolute;
-				top: -0.7rem;
-				width: 9rem;
+				@include positionMixin(absolute, 0.5rem, none, none, none);
+				width: 10rem;
 			}
 		}
 	}
 
 	.imgContainerShow {
-		padding: 2rem 4rem;
+		@include positionMixin(absolute, none, 0, 0, none);
+		@include flexBoxMixin(row, center, end, 10px);
+		padding: 2rem 4rem 2.5rem;
 		background-color: rgba($black, 0.2);
 		backdrop-filter: blur(1px);
-		height: 20%;
+		height: 12rem;
 		width: 100%;
-		right: 0;
-		bottom: $slidinContainerImage;
-		@include flexBoxMixin(row, center, 10px);
-		justify-content: end;
 		animation: slideInImage 0.5s;
 
 		& > img {
