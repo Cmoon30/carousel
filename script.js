@@ -30,7 +30,6 @@ $(document).ready(() => {
 
 	const handleMediaChange = (e) => {
 		if (!e.matches) {
-			menuBar.show();
 			menuBar.on("click", openMenu);
 			closeMenu.on("click", closeMenuFunction);
 		} else {
@@ -46,7 +45,7 @@ $(document).ready(() => {
 	const showImageProduct = $("main section");
 	const buttonSlider = [$(".buttonSlider_first"), $(".buttonSlider_second")];
 	let defaultIndex = 0;
-	const infoCircleToggle = $(".infoCircle div li");
+	const infoCircleToggle = $(".infoCircle section div");
 
 	const slideImage = (newIndex) => {
 		if (defaultIndex == newIndex) return;

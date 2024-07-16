@@ -6,7 +6,6 @@ button {
 
 .button {
   padding: 10px 18px 11px;
-  font-size: 18px;
   border-radius: 50px;
 }
 .button_contact {
@@ -89,7 +88,7 @@ button {
   width: 1.5rem;
 }
 
-section,
+header > section,
 section > .navLinks {
   display: flex;
 }
@@ -100,29 +99,27 @@ header {
   align-items: none;
   justify-content: none;
   gap: 30px;
+  background-color: rgba(15, 15, 15, 0.2);
   padding: 0 15px 15px;
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
   z-index: 1;
+  pointer-events: none;
 }
-header section {
+header > section {
   align-items: center;
   overflow: hidden;
 }
-header section .navLinks,
-header section .sideMenu {
-  pointer-events: all;
-}
-header section .navLinks {
+header > section .navLinks {
   gap: 5px;
 }
-header section .navLinks .activeNavTab {
+header > section .navLinks .activeNavTab {
   border: 1px solid #f4f4f4;
   border-radius: 50px;
   position: relative;
 }
-header section .navLinks .activeNavTab::before {
+header > section .navLinks .activeNavTab::before {
   content: "";
   border-radius: 12px;
   border: none solid #f4f4f4;
@@ -134,11 +131,11 @@ header section .navLinks .activeNavTab::before {
   transform: translateY(-50%);
   background-color: #f4f4f4;
 }
-header section .navLinks a {
+header > section .navLinks a {
   padding: 4px 11px 5px 15px;
   border: 1px solid transparent;
 }
-header section .sideMenu {
+header > section .sideMenu {
   position: fixed;
   top: 0;
   right: 0;
@@ -153,13 +150,13 @@ header section .sideMenu {
   z-index: 1;
   text-align: center;
 }
-header section .sideMenu > * {
+header > section .sideMenu > * {
   width: 100%;
 }
-header section .sideMenu > *:nth-child(n+2) {
+header > section .sideMenu > *:nth-child(n+2) {
   margin-bottom: 15px;
 }
-header section .sideMenu .closeMenu {
+header > section .sideMenu .closeMenu {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -168,106 +165,114 @@ header section .sideMenu .closeMenu {
   padding-right: 15px;
   height: 58px;
 }
-header section h2 {
+header > section h2 {
   font-size: 62px;
   line-height: 1;
   width: 30rem;
 }
-header section:nth-child(1) {
+header > section:nth-child(1) {
   justify-content: space-between;
   height: 70px;
+  pointer-events: fill;
 }
-header section:nth-child(2) {
+header > section:nth-child(2) {
   display: flex;
   flex-direction: column;
   align-items: start;
   justify-content: none;
   gap: 30px;
   position: relative;
-  height: 100%;
+  pointer-events: none;
+  height: calc(100% - 70px);
 }
-header section:nth-child(2) span,
-header section:nth-child(2) p {
-  border-top: 0.1px solid #f4f4f4;
-}
-header section:nth-child(2) span {
+header > section:nth-child(2) .title_parag {
   width: -moz-fit-content;
   width: fit-content;
   letter-spacing: 2px;
 }
-header section:nth-child(2) span p {
+header > section:nth-child(2) .title_parag,
+header > section:nth-child(2) .title_parag p {
+  border-top: 0.1px solid #f4f4f4;
+}
+header > section:nth-child(2) .title_parag p {
   border-bottom: 0.1px solid #f4f4f4;
   padding: 0 3rem;
 }
-header section:nth-child(2) .infoCircle {
+header > section:nth-child(2) .infoCircle {
   content: none;
   border-radius: none;
   border: none solid #f4f4f4;
-  width: 12rem;
-  top: 80%;
-  left: -2.5rem;
+  width: 192px;
+  top: none;
+  left: -6rem;
   position: absolute;
   aspect-ratio: 1;
+  bottom: -3%;
+  max-height: 150px;
 }
-header section:nth-child(2) .infoCircle::after {
+header > section:nth-child(2) .infoCircle::after {
   content: "";
   border-radius: 50%;
   border: none solid #f4f4f4;
-  width: 12rem;
+  width: 192px;
   top: none;
   left: none;
   position: absolute;
   aspect-ratio: 1;
-  border-top: 0.5px solid #f4f4f4;
+  border: 0.5px solid #f4f4f4;
   transform: rotate(35deg);
 }
-header section:nth-child(2) .infoCircle div {
+header > section:nth-child(2) .infoCircle_container {
   position: absolute;
   display: flex;
   gap: 5px;
 }
-header section:nth-child(2) .infoCircle div::before, header section:nth-child(2) .infoCircle div::after {
+header > section:nth-child(2) .infoCircle_container::before, header > section:nth-child(2) .infoCircle_container::after {
   content: "";
   aspect-ratio: 1;
 }
-header section:nth-child(2) .infoCircle div::before {
+header > section:nth-child(2) .infoCircle_container::before {
   display: inline-block;
   width: 1.5rem;
   margin: 0 0 2rem;
 }
-header section:nth-child(2) .infoCircle div::after {
+header > section:nth-child(2) .infoCircle_container::after {
   position: absolute;
   width: 0.5rem;
   background-color: #f4f4f4;
   border-radius: 50%;
 }
-header section:nth-child(2) .infoCircle div li {
+header > section:nth-child(2) .infoCircle_container div {
   display: none;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+header > section:nth-child(2) .infoCircle_container div > * {
   text-wrap: nowrap;
 }
-header section:nth-child(2) .infoCircle div:nth-child(1) {
-  top: -3.4rem;
-  left: 10rem;
+header > section:nth-child(2) .infoCircle_container:nth-child(1) {
+  top: -54.4px;
+  left: 150px;
 }
-header section:nth-child(2) .infoCircle div:nth-child(1)::before {
+header > section:nth-child(2) .infoCircle_container:nth-child(1)::before {
   background: url(/assets/imgSource/clothesIcon.png) no-repeat center/cover;
 }
-header section:nth-child(2) .infoCircle div:nth-child(1)::after {
-  left: -3rem;
-  top: 3.31rem;
+header > section:nth-child(2) .infoCircle_container:nth-child(1)::after {
+  top: 57px;
+  left: -20px;
 }
-header section:nth-child(2) .infoCircle div:nth-child(2) {
-  top: 3rem;
-  left: 13.8rem;
+header > section:nth-child(2) .infoCircle_container:nth-child(2) {
+  top: 40px;
+  left: 220px;
 }
-header section:nth-child(2) .infoCircle div:nth-child(2)::before {
+header > section:nth-child(2) .infoCircle_container:nth-child(2)::before {
   background: url(/assets/imgSource/recyclingIcon.png) no-repeat center/cover;
 }
-header section:nth-child(2) .infoCircle div:nth-child(2)::after {
-  top: 1.6rem;
-  left: -2.2rem;
+header > section:nth-child(2) .infoCircle_container:nth-child(2)::after {
+  top: 45px;
+  left: -30px;
 }
-header section:nth-child(2) .infoCircle .activeInfoCircle {
+header > section:nth-child(2) .infoCircle .activeInfoCircle {
   display: block;
 }
 
@@ -285,14 +290,18 @@ main .imgContainer {
   overflow: hidden;
 }
 main > section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: none;
   position: relative;
   min-height: 100%;
 }
 main > section > img {
   -o-object-fit: cover;
      object-fit: cover;
-  width: 100%;
-  aspect-ratio: 1;
+  height: 100%;
 }
 main .imgContainer {
   position: absolute;
@@ -301,8 +310,6 @@ main .imgContainer {
   bottom: 5%;
   left: none;
   overflow: visible;
-  height: -moz-fit-content;
-  height: fit-content;
 }
 main .imgContainer > img {
   border-radius: 12px;
@@ -310,6 +317,22 @@ main .imgContainer > img {
   -o-object-fit: cover;
      object-fit: cover;
   aspect-ratio: 10/6;
+}
+main .imgContainer::after {
+  content: "show more";
+  border-radius: none;
+  border: none solid #f4f4f4;
+  width: none;
+  top: 60%;
+  left: none;
+  position: absolute;
+  aspect-ratio: 1;
+  display: none;
+  text-wrap: nowrap;
+  height: 20%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #f4f4f4;
 }
 main .imgContainer .buttonCloseSlider {
   cursor: pointer;
@@ -336,22 +359,6 @@ main .imgContainerActive:hover > img {
 }
 main .imgContainerActive:hover::after {
   display: block;
-}
-main .imgContainerActive::after {
-  content: "show more";
-  border-radius: none;
-  border: none solid #f4f4f4;
-  width: none;
-  top: 50%;
-  left: none;
-  position: absolute;
-  aspect-ratio: 1;
-  display: none;
-  text-wrap: nowrap;
-  height: 20%;
-  transform: translateY(-50%);
-  font-size: 18px;
-  color: #f4f4f4;
 }
 main .imgContainerActive > img:nth-child(1) {
   width: 9rem;
@@ -414,6 +421,7 @@ main .imgContainerShow > img {
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
   color: #f4f4f4;
+  font-size: clamp(18px, 18px + 0.0039vw, 20px);
 }
 
 a {
@@ -451,33 +459,67 @@ body > * {
   height: 100%;
 }
 body > *:nth-child(1) {
-  width: 40%;
+  width: 45%;
 }
 body > *:nth-child(2) {
   width: 100%;
 }
 
-@media screen and (max-width: 1284px) {
+@media screen and (max-width: 1115px) {
   header {
     position: fixed;
     top: 0;
     right: none;
     bottom: none;
-    left: 50%;
-    width: 30rem;
-    transform: translateX(-50%);
+    left: none;
     width: 100% !important;
-    background-color: rgba(15, 15, 15, 0.2);
-    z-index: 1;
-    pointer-events: none;
+  }
+  header section:nth-child(2) .infoCircle {
+    top: 60%;
+    left: -70px;
+  }
+  header section:nth-child(2) .infoCircle::after {
+    width: 112px;
+  }
+  header section:nth-child(2) .infoCircle_container:nth-child(1) {
+    top: -40px;
+    left: 116px;
+  }
+  header section:nth-child(2) .infoCircle_container:nth-child(2) {
+    top: 35px;
+    left: 132px;
   }
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
+  * {
+    font-size: clamp(14px, 12.0916px + 0.5089vi, 16px);
+  }
+  header section h2 {
+    font-size: clamp(35px, 1.6031px + 8.9059vi, 70px);
+    width: clamp(320px, 90.9924px + 61.0687vi, 560px);
+  }
   header section .navLinks {
     display: none;
   }
   header section .menuButton {
-    pointer-events: all;
-    display: block;
+    display: block !important;
+  }
+  header section .infoCircle_container h3 {
+    font-size: clamp(16px, 16px + 0.0089vw, 18px);
+  }
+}
+@media screen and (max-width: 375px) {
+  * {
+    font-size: clamp(9px, 3.9065px + 2.1583vi, 12px);
+  }
+}
+@media screen and (max-height: 595px) {
+  .infoCircle {
+    display: none;
+  }
+}
+@media screen and (max-height: 402px) {
+  .title_parag {
+    display: none;
   }
 }/*# sourceMappingURL=styles.css.map */

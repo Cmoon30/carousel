@@ -13,13 +13,13 @@ main {
 	}
 
 	& > section {
+		@include flexBoxMixin(row, center, center, none);
 		position: relative;
 		min-height: 100%;
 
 		& > img {
 			object-fit: cover;
-			width: 100%;
-			aspect-ratio: 1;
+			height: 100%;
 		}
 	}
 
@@ -27,13 +27,22 @@ main {
 	.imgContainer {
 		@include positionMixin(absolute, none, 3%, 5%, none);
 		overflow: visible;
-		height: fit-content;
 
 		& > img {
 			border-radius: 12px;
 			border: 1px solid $white;
 			object-fit: cover;
 			aspect-ratio: 10 / 6;
+		}
+
+		&::after {
+			@include pseudoMixin("show more", none, none, none, 60%, none);
+			display: none;
+			text-wrap: nowrap;
+			height: 20%;
+			transform: translateY(-50%);
+			font-size: 18px;
+			color: $white;
 		}
 
 		.buttonCloseSlider {
@@ -57,16 +66,6 @@ main {
 
 		&:hover::after {
 			display: block;
-		}
-
-		&::after {
-			@include pseudoMixin("show more", none, none, none, 50%, none);
-			display: none;
-			text-wrap: nowrap;
-			height: 20%;
-			transform: translateY(-50%);
-			font-size: 18px;
-			color: $white;
 		}
 
 		& > img {

@@ -1,25 +1,22 @@
 @use "../variables" as *;
 @use "../utilities/mixins" as *;
 
-section,
+header > section,
 section > .navLinks {
 	display: flex;
 }
 
 header {
 	@include flexBoxMixin(column, none, none, 30px);
+	background-color: rgba($black, 0.2);
 	padding: 0 15px 15px;
 	user-select: none;
 	z-index: 1;
+	pointer-events: none;
 
-	section {
+	& > section {
 		align-items: center;
 		overflow: hidden;
-
-		.navLinks,
-		.sideMenu {
-			pointer-events: all;
-		}
 
 		.navLinks {
 			gap: 5px;
@@ -77,22 +74,24 @@ header {
 		&:nth-child(1) {
 			justify-content: space-between;
 			height: 70px;
+			pointer-events: fill;
 		}
 
 		// content
 		&:nth-child(2) {
 			@include flexBoxMixin(column, start, none, 30px);
 			position: relative;
-			height: 100%;
+			pointer-events: none;
+			height: calc(100% - 70px);
 
-			span,
-			p {
-				border-top: 0.1px solid $white;
-			}
-
-			span {
+			.title_parag {
 				width: fit-content;
 				letter-spacing: 2px;
+
+				&,
+				p {
+					border-top: 0.1px solid $white;
+				}
 
 				p {
 					border-bottom: 0.1px solid $white;
@@ -101,15 +100,17 @@ header {
 			}
 
 			.infoCircle {
-				@include pseudoMixin(none, none, none, 12rem, 80%, -2.5rem);
+				@include pseudoMixin(none, none, none, 192px, none, -6rem);
+				bottom: -3%;
+				max-height: 150px;
 
 				&::after {
-					@include pseudoMixin("", 50%, none, 12rem, none, none);
-					border-top: 0.5px solid $white;
+					@include pseudoMixin("", 50%, none, 192px, none, none);
+					border: 0.5px solid $white;
 					transform: rotate(35deg);
 				}
 
-				div {
+				&_container {
 					position: absolute;
 					display: flex;
 					gap: 5px;
@@ -135,15 +136,19 @@ header {
 						border-radius: 50%;
 					}
 
-					li {
+					div {
 						display: none;
-						text-wrap: nowrap;
+						width: fit-content;
+
+						& > * {
+							text-wrap: nowrap;
+						}
 					}
 
 					// fist child container
 					&:nth-child(1) {
-						top: -3.4rem;
-						left: 10rem;
+						top: -54.4px;
+						left: 150px;
 
 						&::before {
 							background: url(/assets/imgSource/clothesIcon.png) no-repeat
@@ -152,15 +157,15 @@ header {
 
 						// small circle dot in list
 						&::after {
-							left: -3rem;
-							top: 3.31rem;
+							top: 57px;
+							left: -20px;
 						}
 					}
 
 					// second child container
 					&:nth-child(2) {
-						top: 3rem;
-						left: 13.8rem;
+						top: 40px;
+						left: 220px;
 
 						&::before {
 							background: url(/assets/imgSource/recyclingIcon.png) no-repeat
@@ -169,8 +174,8 @@ header {
 
 						// small circle dot in list
 						&::after {
-							top: 1.6rem;
-							left: -2.2rem;
+							top: 45px;
+							left: -30px;
 						}
 					}
 				}

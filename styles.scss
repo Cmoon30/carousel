@@ -6,6 +6,7 @@
 	box-sizing: border-box;
 	font-family: "Poppins", sans-serif;
 	color: $white;
+	font-size: clamp(18px, calc(18px + 0.0039vw), 20px);
 }
 
 a {
@@ -31,11 +32,9 @@ body {
 
 	& > * {
 		height: 100%;
-	}
 
-	& > * {
 		&:nth-child(1) {
-			width: 40%;
+			width: 45%;
 		}
 
 		&:nth-child(2) {
@@ -43,28 +42,77 @@ body {
 		}
 	}
 }
-
-@media screen and (max-width: 1284px) {
+@media screen and (max-width: 1115px) {
 	header {
-		@include positionMixin(fixed, 0, none, none, 50%);
-		width: 30rem;
-		transform: translateX(-50%);
+		@include positionMixin(fixed, 0, none, none, none);
 		width: 100% !important;
-		background-color: rgba($black, 0.2);
-		z-index: 1;
-		pointer-events: none;
+
+		section {
+			&:nth-child(2) .infoCircle {
+				top: 60%;
+				left: -70px;
+
+				&::after {
+					width: 112px;
+				}
+
+				&_container {
+					// fist child container
+					&:nth-child(1) {
+						top: -40px;
+						left: 116px;
+					}
+
+					// second child container
+					&:nth-child(2) {
+						top: 35px;
+						left: 132px;
+					}
+				}
+			}
+		}
 	}
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
+	* {
+		font-size: clamp(14px, 12.0916px + 0.5089vi, 16px);
+	}
+
 	header section {
+		h2 {
+			font-size: clamp(35px, 1.6031px + 8.9059vi, 70px);
+			width: clamp(320px, 90.9924px + 61.0687vi, 560px);
+		}
+
 		.navLinks {
 			display: none;
 		}
 
 		.menuButton {
-			pointer-events: all;
-			display: block;
+			display: block !important;
 		}
+
+		.infoCircle_container h3 {
+			font-size: clamp(16px, calc(16px + 0.0089vw), 18px);
+		}
+	}
+}
+
+@media screen and (max-width: 375px) {
+	* {
+		font-size: clamp(9px, 3.9065px + 2.1583vi, 12px);
+	}
+}
+
+@media screen and (max-height: 595px) {
+	.infoCircle {
+		display: none;
+	}
+}
+
+@media screen and (max-height: 402px) {
+	.title_parag {
+		display: none;
 	}
 }
